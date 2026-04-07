@@ -141,6 +141,7 @@ MODEL GRAPH
 
  
 RESULT:
+
 ![WhatsApp Image 2026-04-07 at 1 25 46 PM](https://github.com/user-attachments/assets/516a8fe1-51ac-4246-9f7b-b44a90c7ba10)
 
 Thus the amplitude modulation and demodulation is experimentally done and the output is verified.
