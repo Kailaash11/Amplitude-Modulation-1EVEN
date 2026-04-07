@@ -76,30 +76,71 @@ Compare the original modulating signal with the demodulated signal. PROCEDURE
 •	Verify the generated waveform using Tabulation and Model Waveform
 
 Program
+clc;
+clear;
 
+// Parameters
+Ac = 31.4;          // Carrier amplitude
+Am = 15.7;          // Message amplitude
+Fc =5660;       // Carrier frequency (Hz)
+Fm = 566;        // Message frequency (Hz)
+Fs = 56600;      // Sampling frequency (Hz)
 
+// Time axis
+t = 0:1/Fs:2/Fm;
+
+// Message signal
+m = Am * sin(2*%pi*Fm*t);
+
+// Carrier signal
+c = Ac * sin(2*%pi*Fc*t);
+
+// AM modulation
+am_signal = (Ac + m) .* sin(2*%pi*Fc*t);
+
+// Plotting
+subplot(4,1,1);
+plot(t, m);
+title("Message Signal");
+xgrid();
+
+subplot(4,1,2);
+plot(t, c);
+title("Carrier Signal");
+xgrid();
+
+subplot(4,1,3);
+plot(t, am_signal);
+title("AM Modulated Signal");
+xgrid();
+
+// AM Demodulation using envelope detector
+demodulated_signal = abs(hilbert(am_signal)) - Ac;
+
+subplot(4,1,4);
+plot(t, demodulated_signal);
+title("Demodulated Signal");
+xgrid();
 
 Output Waveform
 
-
-
-
+<img width="752" height="530" alt="image" src="https://github.com/user-attachments/assets/1d475aaf-9107-46ea-8940-f3816199321f" />
 
 TABULATION:
+
+![WhatsApp Image 2026-04-07 at 1 24 41 PM](https://github.com/user-attachments/assets/efeecabe-7b24-4375-9d3e-59ab7b6319d0)
 
 
 
 Calculation
-1.	ma (Theory) = am/ac =
-2.	ma(Practical) = (Emax-Emin)/(Emax+Emin) =
+![WhatsApp Image 2026-04-07 at 1 05 21 PM](https://github.com/user-attachments/assets/7c4287b1-716b-4f68-807e-e7cd74d890f9)
 
 
 MODEL GRAPH
  <img width="919" height="1290" alt="image" src="https://github.com/user-attachments/assets/55326c5b-7dd5-4873-aaf6-d219bb7c4420" />
 
  
- 
-
-
 RESULT:
+![WhatsApp Image 2026-04-07 at 1 25 46 PM](https://github.com/user-attachments/assets/516a8fe1-51ac-4246-9f7b-b44a90c7ba10)
+
 Thus the amplitude modulation and demodulation is experimentally done and the output is verified.
